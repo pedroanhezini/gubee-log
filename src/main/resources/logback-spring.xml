@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-    <property name="LOG_PATH" value="./logs" />
-
-    <appender name="jsonAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/spring-boot-logger.log</file>
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <maxIndex>1</maxIndex>
-            <fileNamePattern>${LOG_PATH}.%i</fileNamePattern>
-        </rollingPolicy>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1MB</MaxFileSize>
-        </triggeringPolicy>
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n
+            </pattern>
+        </encoder>
     </appender>
-
-    <appender name="consoleAppender"
-              class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable
-            </Pattern>
-        </layout>
-    </appender>
-
-    <logger name="jsonLogger" additivity="false" level="DEBUG">
-        <appender-ref ref="jsonAppender"/>
-    </logger>
 
     <root level="INFO">
-        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="STDOUT"/>
     </root>
+
+    <appender name="integrationAppender"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"type":"integrationLog"}</customFields>
+        </encoder>
+    </appender>
+
+    <logger name="integrationLogger" level="INFO">
+        <appender-ref ref="integrationAppender"/>
+    </logger>
 
 </configuration>

@@ -14,3 +14,7 @@
 {"@timestamp":"2020-05-07T00:48:44.833-03:00","@version":"1","message":"An INFO Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-4","level":"INFO","level_value":20000}
 {"@timestamp":"2020-05-07T00:48:44.836-03:00","@version":"1","message":"A WARN Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-4","level":"WARN","level_value":30000}
 {"@timestamp":"2020-05-07T00:48:44.837-03:00","@version":"1","message":"An ERROR Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-4","level":"ERROR","level_value":40000}
+{"@timestamp":"2020-05-07T14:29:07.649-03:00","@version":"1","message":"A DEBUG Message orderId=123","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-2","level":"DEBUG","level_value":10000,"orderId":"123"}
+{"@timestamp":"2020-05-07T14:29:07.811-03:00","@version":"1","message":"An INFO Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-2","level":"INFO","level_value":20000}
+{"@timestamp":"2020-05-07T14:29:07.811-03:00","@version":"1","message":"A WARN Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-2","level":"WARN","level_value":30000}
+{"@timestamp":"2020-05-07T14:29:07.811-03:00","@version":"1","message":"An ERROR Message","logger_name":"jsonLogger","thread_name":"http-nio-8080-exec-2","level":"ERROR","level_value":40000}
